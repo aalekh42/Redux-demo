@@ -10,6 +10,7 @@ function Home(props){
     return(
         <>
         <Header />
+        <h2>This is Master Branch</h2>
         <div>Number of Cards :{props.numOfcards}</div>
         <button onClick={props.buyCard}>BUY</button>
         <button onClick={props.returnCard}>RETURN</button>
