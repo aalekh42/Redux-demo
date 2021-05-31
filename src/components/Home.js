@@ -7,9 +7,11 @@ import {connect} from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function Home(props){
+    const user="Aalekh";
     return(
         <>
         <Header />
+        <h2>Hello Branch 1 here created by {user}</h2>
         <div>Number of Cards :{props.numOfcards}</div>
         <button onClick={props.buyCard}>BUY</button>
         <button onClick={props.returnCard}>RETURN</button>
