@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from './Header';
-import NewHome from './NewHome';
 import Footer from './Footer';
 import Tooltip from './Tooltip';
 import {buyCard,returnCard, buyIceCream, returnIceCream} from '../redux';
@@ -8,7 +7,8 @@ import {connect} from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {Redirect} from "react-router-dom";
 
-function Home(props){
+function NewHome(props){
+    const [number,setNumber]=React.useState(1);
     const user="Aalekh";
     {/*const {authorized}=props;
      if(!authorized){
@@ -18,25 +18,14 @@ function Home(props){
     } */}
     return(
         <>
-        <Header />
         
-        <h2>This is Master Branch {user}</h2>
-        <div>Number of Cards :{props.numOfcards}</div>
-        <button onClick={props.buyCard}>BUY</button>
-        <button onClick={props.returnCard}>RETURN</button>
-        <div>NUmber of IceCeam :{props.numOfIceCreams}</div>
-        <button onClick={props.buyIceCream}>BUY</button>
-        <button onClick={props.returnIceCream}>RETURN</button>
-        <div><span>MODAL HERE</span>
+        <input type="text" value={number} onChange={(e)=>setNumber(e.target.value)}></input>
+        <button onClick={()=>props.buyCard(number)}>BUY{number}Cards</button>
+        {/* <div><span>MODAL HERE</span>
         {props.showModal?<h2>MODAL</h2>:null}
         </div>
-
-        <NewHome/>
         <Tooltip user={user} />
-        {/* <button >RESET</button> */}
-        <Router>
-          <Footer />
-        </Router>
+        <button >RESET</button> */}
         </>
     )
 }
@@ -56,7 +45,7 @@ const mapStateToProps = state =>{
 //STEP 2 (Use dispatch as a paramter and returns a function. Here e can use action Creater methods will act as an props)
 const mapDispatchToProps=dispatch=>{
     return{
-        buyCard:()=>dispatch(buyCard()),
+        buyCard:number=>dispatch(buyCard(number)),
         returnCard:()=>dispatch(returnCard()),
         buyIceCream:()=>dispatch(buyIceCream()),
         returnIceCream:()=>dispatch(returnIceCream())
@@ -64,4 +53,4 @@ const mapDispatchToProps=dispatch=>{
 }
 
 //STEP 3 (Connect)
-export default connect(mapStateToProps,mapDispatchToProps)(Home);
+export default connect(mapStateToProps,mapDispatchToProps)(NewHome);

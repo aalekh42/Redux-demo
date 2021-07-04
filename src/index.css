@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.button{
+  border:1px solid green;
+  border-radius: 5px;
+}
+/* .Tooltip{
+  background-color: aqua;
+  max-height: 800px;
+  max-width: 400px;
+  position:relative;
+  margin-left: 440px;
+} */
