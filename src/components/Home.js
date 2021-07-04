@@ -1,13 +1,21 @@
 import React from 'react';
 import Header from './Header';
+import NewHome from './NewHome';
 import Footer from './Footer';
-
+import Tooltip from './Tooltip';
 import {buyCard,returnCard, buyIceCream, returnIceCream} from '../redux';
 import {connect} from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {Redirect} from "react-router-dom";
 
 function Home(props){
     const user="Aalekh";
+    {/*const {authorized}=props;
+     if(!authorized){
+        return(
+            <Redirect to="./"/>
+        )
+    } */}
     return(
         <>
         <Header />
@@ -18,6 +26,12 @@ function Home(props){
         <div>NUmber of IceCeam :{props.numOfIceCreams}</div>
         <button onClick={props.buyIceCream}>BUY</button>
         <button onClick={props.returnIceCream}>RETURN</button>
+        <div><span>MODAL HERE</span>
+        {props.showModal?<h2>MODAL</h2>:null}
+        </div>
+
+        <NewHome/>
+        <Tooltip user={user} />
         {/* <button >RESET</button> */}
         <Router>
           <Footer />
@@ -31,7 +45,7 @@ const mapStateToProps = state =>{
     return{
         numOfcards:state.Card.numOfcards, 
         //used here state.Card because we have mentioned an object inside combinereducers of store.js(where Card is for CardReducer)
-        
+        showModal:state.Card.showModal,
         numOfIceCreams:state.IceCream.numOfIceCreams
     //used here state.IceCream because we have mentioned an object inside combinereducers of store.js(Where IceCream is for IceCreamReducer)
 
