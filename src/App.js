@@ -1,10 +1,11 @@
 import "./App.css";
 import Home from "./components/Home";
+import NewHome from "./components/NewHome";
 import Login from "./components/Login";
+import Tooltip from "./components/Tooltip";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-
 
 function App() {
   return (
@@ -12,14 +13,15 @@ function App() {
       <div className="App">
         <Router>
           <Route exact path="/">
-            <Home />
+            <Login />
           </Route>
-          <Route path="/Home">
-            <div>Chala JAA </div>
+          <Route path="/Home" component={()=><Home/>}>
           </Route>
+          <Route path="/Tooltip" component={()=><Tooltip/>} />
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/NewHome" component={()=><NewHome/>}></Route>
         </Router>
       </div>
     </Provider>
