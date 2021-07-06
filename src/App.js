@@ -2,6 +2,7 @@ import "./App.css";
 import Home from "./components/Home";
 import NewHome from "./components/NewHome";
 import Login from "./components/Login";
+import Users from "./components/Users";
 import Tooltip from "./components/Tooltip";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -22,6 +23,7 @@ function App() {
             <Login />
           </Route>
           <Route path="/NewHome" component={()=><NewHome/>}></Route>
+          <Route path="/Users" component={()=><Users/>}></Route>
         </Router>
       </div>
     </Provider>
